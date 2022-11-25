@@ -1,0 +1,29 @@
+{%extends 'base_profile.html' %}
+{% block userhome_body %}
+<div class="Container-fluid text-center m-4">
+    {% if projects %}
+    <table class="table table-hover table-responsive table-primary">
+   <thead>
+    <tr><h2 class="alert alert-info text-center">User Assigned Projects</h2></tr>
+   <tr>
+       <th>Project Name</th>
+       <th>Client</th>
+       <th>Created On <th>
+
+   </tr>
+   </thead>
+   <tbody>
+  {% for proj in projects %}
+        <tr>
+           <td>{{ proj.name }}</td>
+           <td>{{ proj.client.client_name }}</td>
+           <td>{{ proj.updated_on }}</td>
+       </tr>
+   {% endfor %}
+   </tbody>
+    </table>
+    {%else %}
+    <div class="container-fluid text-center m-4"><h2>Projects Not Assigned Yet!</h2></div>
+{% endif %}
+</div>
+{% endblock %}

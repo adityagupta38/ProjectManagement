@@ -1,0 +1,41 @@
+{%extends 'user_home.html' %}
+{% block userhome_body %}
+{% load widget_tweaks %}
+<div class="container-fluid">
+<div class="Container-fluid text-center m-5">
+<form method="post">
+{% csrf_token %}
+     <h2 class="alert-primary text-center">Add Projects</h2><br>
+
+            {% if errors %}
+            {% for error in errors %}
+                <h4 class="text-center">{{ error }}</h4>
+                {% endfor %}
+            {% endif %}<br>
+
+    {% if dberror %}
+                <h4 class="text-center alert-danger">{{ dberror }}</h4>
+    {% endif %}<br>
+
+      {% if messages %}
+            {% for msg in messages %}
+                <h4 class="text-center alert-success">{{ msg }}</h4>
+                {% endfor %}
+            {% endif %}<br>
+
+
+
+               {% render_field form.name class="form-control" placeholder="Project Name" %}<br>
+
+               {% render_field form.client class="form-control" placeholder="Client Name" %}<br>
+
+               {% render_field form.username class="form-control" placeholder="Username of user to assign project" %}<br>
+
+
+
+               <input type="submit" value="Register" class="btn btn-success"><br>
+
+</form>
+</div>
+</div>
+{% endblock %}

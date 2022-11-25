@@ -1,0 +1,37 @@
+{%extends 'base.html' %}
+{% block content %}
+
+<div class="container center w-50 bg-light bg-opacity-75" style="margin-top: 6%">
+ <form method="POST">
+     {% csrf_token %}
+     <h2 class="alert-primary text-center">User Login</h2><br>
+     <!-- form redirected message or form error section -->
+     {% if messages %}
+     {% for msg in messages %}
+         <h4  class="alert alert-success text-center">{{ msg }}</h4>
+     {% endfor %}
+     {% endif %}
+     {%if form.errors %}
+     {% for error in form.errors.values %}
+     {{error}}
+     {% endfor %}
+     {%endif%}<br>
+     <!--end of form error section -->
+
+     <!-- form fields section -->
+    <div class="row">
+        <div class="col-sm-6"><label>Username</label></div>
+        <div class="col-sm-6">{{ form.username }}</div>
+    </div><br>
+     <div class="row">
+        <div class="col-sm-6"><label>Password</label></div>
+        <div class="col-sm-6">{{ form.password }}</div>
+    </div><br>
+ <div class="row">
+     <div class="col-sm-6"><input type="submit" class="btn btn-primary w-25" value="Login" style="min-width: 50%"></div>
+     <div class="col-sm-6"><h5>if you are not registered yet then<br><a href="/usersignup">click here to Signup</a></h5></div>
+ </div>
+ </form>
+</div>
+<!-- end of form fields section-->
+{%endblock%}

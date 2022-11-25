@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <h2 class="alert-warning alert alert text-center">Hello {{user.first_name}} {{user.last_name}} <p class="text-sm-end"><a href="/userlogout"><button class="btn btn-danger">Logout</button></a></p></h2><br>
+    <div class="container">
+        <div class="row">
+             <div class="col-sm-4">
+                <a href="/userhome"><button type="button" class="btn btn-outline-primary w-100">Home</button></a>
+            </div>
+            <div class="col-sm-2">
+                <a href="/registerclient/"><button type="button" class="btn btn-outline-primary w-100">Register a Client</button></a>
+            </div>
+            <div class="col-sm-2">
+                <a href="/addproject"><button type="button" class="btn btn-outline-primary w-100">Add new Project</button></a>
+            </div>
+             <div class="col-sm-2">
+                <a href="/assignusers"><button type="button" class="btn btn-outline-primary w-100">Assign Users to Projects</button></a>
+            </div>
+            <div class="col-sm-2">
+                <a href="/userprojects"><button type="button" class="btn btn-outline-primary w-100">Assigned Projects</button></a>
+            </div>
+        </div>
+    </div>
+    
+    {% block userhome_body %}
+        {% endblock %}
+    
+    
+{% endblock %}

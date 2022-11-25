@@ -1,0 +1,16 @@
+{%extends 'user_home.html' %}
+{% block userhome_body %}
+{% load widget_tweaks %}
+<div class="container-fluid">
+<div class="Container-fluid text-center m-5">
+<form method="post">
+{% csrf_token %}
+<h2 class="alert alert-danger text-center">Confirm Delete?</h2>
+
+               <input type="submit" value="Yes" class="btn btn-danger ">
+               <a href="/userhome"><button type="button" class="btn btn-success">No</button></a>
+
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{%extends 'user_home.html' %}
+{% block userhome_body %}
+{% load widget_tweaks %}
+<div class="container-fluid">
+<div class="Container-fluid text-center m-5">
+<form method="post">
+{% csrf_token %}
+     <h2 class="alert-primary text-center">Register Clients</h2><br>
+     
+            {% if errors %}
+            {% for error in errors %}
+                <h4 class="text-center">{{ error }}</h4>
+                {% endfor %}
+            {% endif %}<br>
+
+    {% if dberror %}
+                <h4 class="text-center alert-danger">{{ dberror }}</h4>
+    {% endif %}<br>
+
+
+               {% render_field form.client_name class="form-control" placeholder="Client Name" %}<br>
+
+               {% render_field form.created_by class="form-control" placeholder="Created By" %}<br>
+
+
+
+               <input type="submit" value="Register" class="btn btn-success"><br>
+
+</form>
+</div>
+</div>
+{% endblock %}

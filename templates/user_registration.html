@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% load widget_tweaks %}
+
+    <div class="row-col-sm-12 text-center"><a href="/userlogin/"><button class="btn btn-primary w-50">Home</button> </a> </div>
+       <div class="container center w-50 mt-5 p-3 bg-light bg-opacity-75">
+        <form method="POST">
+            {% csrf_token %}
+            <h2 class="alert-primary text-center">User Signup</h2><br>
+            <!--form error section -->
+        <!-- context variable for showing models unique constraint errpr-->
+        {% if msg %}
+            <h3 class="alert-danger text-sm-center">{{ msg }}</h3>
+        {% endif %}
+        <!-- context variable for showing form validation error-->
+            {%if errors %}
+                {% for error in errors.values %}
+                <h3 class="alert-danger text-sm-center">{{error}}</h3>
+                {% endfor %}
+            {%endif%}
+            <!--end of form error section -->
+
+            <!-- form fields section -->
+           <div class="row">
+               <div class="col-sm-12">{% render_field form.username class="form-control" placeholder="Username" %}
+               <span class="helptext">Required Field. 150 characters or fewer. Letters, digits and @/./+/-/_ allowed only.</span>
+               </div>
+           </div><br>
+            <div class="row">
+               <div class="col-sm-12">{% render_field form.first_name class="form-control" placeholder="First Name" %}</div>
+           </div><br>
+            <div class="row">
+               <div class="col-sm-12">{% render_field form.last_name class="form-control" placeholder="Last Name" %}</div>
+           </div><br>
+             <div class="row">
+               <div class="col-sm-12">{% render_field form.password class="form-control" placeholder="Password" %}</div>
+           </div><br>
+           <div class="row">
+               <div class="col-sm-12">{% render_field form.password2 class="form-control" placeholder="Password Confirmation" %}
+               <span class="helptext">Enter the same password as before, for verification.</span>
+               </div>
+           </div><br>
+        <div class="row">
+            <div class="col-sm-12 text-center"><input type="submit" class="btn btn-primary" value="Signup"></div>
+        </div>
+        </form>
+       </div>
+<!-- end of form fields section-->
+{% endblock %}

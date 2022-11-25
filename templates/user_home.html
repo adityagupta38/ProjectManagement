@@ -1,0 +1,32 @@
+{%extends 'base_profile.html' %}
+{% block userhome_body %}
+<div class="Container-fluid text-center m-4">
+    {% if clients %}
+    <table class="table table-hover table-responsive table-primary">
+   <thead>
+    <tr><h2 class="alert alert-info text-center">Clients Registered</h2></tr>
+   <tr>
+       <th>Name</th>
+       <th>Created By</th>
+       <th>Created On <th>
+       <th colspan="2">Click to perform actions</th>
+
+   </tr>
+   </thead>
+   <tbody>
+  {% for client in clients %}
+        <tr>
+           <td>{{ client.client_name }}</td>
+           <td>{{ client.created_by }}</td>
+           <td>{{ client.created_at }}</td>
+            <td class="text-sm-end"><a href="/updateclient{{client.id}}">Edit</a></td>
+            <td class="text-sm-end"><a href="/deleteclient{{client.id}}">Delete</a></td>
+       </tr>
+   {% endfor %}
+   </tbody>
+    </table>
+    {%else %}
+    <div class="container-fluid text-center m-4"><h2>Clients Not Registered</h2></div>
+{% endif %}
+</div>
+{% endblock %}
