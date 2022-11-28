@@ -23,7 +23,6 @@ def user_signup(request):
                 messages.add_message(request, messages.SUCCESS, 'Signup Successfull Log In To Continue')
                 return redirect('/')
             error = userform.errors
-            userform = UserSignupForm()
             return render(request, 'user_registration.html', {'form': userform, 'errors': error})
         error = 'Username is already Registered Pls try different Username'
         userform = UserSignupForm()

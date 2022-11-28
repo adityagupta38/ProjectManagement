@@ -20,6 +20,10 @@ from proj import views
 from rest_framework import routers
 from proj import apiviews
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 
 router = routers.DefaultRouter()
 router.register('clients', apiviews.ClientsApi, basename='clients')
@@ -41,3 +45,9 @@ urlpatterns = [
     path('assignusers', views.assign_users, name='assign_users'),
     path('userprojects', views.user_projects, name='user_projects'),
 ]
+
+
+
+
+
+urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

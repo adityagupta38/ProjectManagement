@@ -6,10 +6,11 @@ from proj.models import Clients, Projects
 
 
 class UserSignupForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['username', 'password', 'first_name', 'last_name']
-    password2 = forms.CharField(max_length=255)
+    password2 = forms.CharField(max_length=255, widget=forms.PasswordInput)
     first_name = forms.CharField(max_length=155, required=True)
     last_name = forms.CharField(max_length=155, required=True)
 
